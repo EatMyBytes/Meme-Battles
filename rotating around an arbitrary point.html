@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+</html lang='en'>
+  <head>
+  </head>
+  <body>
+    <canvas id="testCanvas" width="500" height="500"></canvas>
+    <script>
+
+    var canvas = document.getElementById("testCanvas");
+    var dc     = canvas.getContext("2d");
+    var angle = 0;
+    window.setInterval(function(){
+        angle = (angle + 1) % 360;
+        dc.clearRect(0, 0, canvas.width, canvas.height);
+
+        dc.save();
+        dc.fillStyle = "#FF0000";
+
+        dc.translate(150,200);
+        dc.rotate( angle*Math.PI/180 );
+        dc.translate(-150,-200);
+
+        dc.beginPath();
+        dc.moveTo(100, 100);
+        dc.lineTo(200, 100);
+        dc.lineTo(200,300);
+        dc.lineTo(100,300);
+        dc.closePath();
+        dc.fill();
+
+        dc.restore();
+    }, 5);
+
+    </script>
+
+
+  </body>
+</html>
